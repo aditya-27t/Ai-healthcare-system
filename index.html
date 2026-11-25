@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MedAssist AI — AI-Based Health Diagnosis &amp; Preliminary Screening System</title>
+  <link rel="stylesheet" href="styles/main.css" />
+</head>
+<body>
+  <!-- Top Clinical Safety Banner -->
+  <div class="safety-ribbon" role="banner">
+    <span class="safety-ribbon__badge">PRELIMINARY SCREENING TOOL</span>
+    <span class="safety-ribbon__text">
+      AI-generated assessments are for informational decision-support only and do <strong>NOT</strong> constitute a confirmed medical diagnosis. In an emergency, call local emergency services immediately.
+    </span>
+  </div>
+
+  <!-- Main Application Shell -->
+  <div id="app-shell" class="app-shell">
+    <!-- Auth View (shown when logged out) -->
+    <main id="auth-view" class="auth-container" aria-label="Authentication"></main>
+
+    <!-- Authenticated Workspace -->
+    <div id="workspace-view" class="workspace hidden">
+      <!-- Sidebar Navigation -->
+      <aside id="sidebar" class="sidebar" aria-label="Primary Navigation">
+        <div class="sidebar__brand">
+          <div class="brand-logo" aria-hidden="true">+</div>
+          <div>
+            <div class="brand-title">MedAssist AI</div>
+            <div class="brand-subtitle">Health Diagnosis SRS</div>
+          </div>
+        </div>
+
+        <nav id="nav-links" class="sidebar__nav"></nav>
+
+        <div class="sidebar__footer">
+          <div id="sidebar-user-card" class="user-card"></div>
+          <button id="logout-btn" class="btn btn--ghost btn--full" type="button">
+            Sign Out
+          </button>
+        </div>
+      </aside>
+
+      <!-- Main Content Area -->
+      <div class="main-column">
+        <header class="topbar">
+          <div class="topbar__left">
+            <button id="mobile-menu-btn" class="btn btn--icon mobile-only" type="button" aria-label="Toggle Menu">
+              &#9776;
+            </button>
+            <div>
+              <h1 id="page-title" class="page-title">Dashboard</h1>
+              <p id="page-subtitle" class="page-subtitle">Preliminary health screening workspace</p>
+            </div>
+          </div>
+          <div class="topbar__right">
+            <span id="transport-badge" class="pill pill--secure" title="Encrypted communication protocol requirement (NFR-SEC-02)">
+              TLS / Encrypted Session
+            </span>
+            <span id="model-status-pill" class="pill pill--info"></span>
+          </div>
+        </header>
+
+        <main id="main-content" class="main-content" tabindex="-1"></main>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Container -->
+  <div id="modal-root" class="modal-backdrop hidden" role="dialog" aria-modal="true"></div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-root" class="toast-container" aria-live="polite"></div>
+
+  <!-- Core Scripts (loaded sequentially so file:// and http:// both work without CORS/bundler issues) -->
+  <script defer src="js/data/medicalKnowledge.js"></script>
+  <script defer src="js/services/cryptoService.js"></script>
+  <script defer src="js/services/storageService.js"></script>
+  <script defer src="js/services/authService.js"></script>
+  <script defer src="js/services/validationService.js"></script>
+  <script defer src="js/services/aiEngine.js"></script>
+  <script defer src="js/services/adminService.js"></script>
+  <script defer src="js/tests/testSuite.js"></script>
+  <script defer src="js/ui/views.js"></script>
+  <script defer src="js/app.js"></script>
+</body>
+</html>
